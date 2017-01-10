@@ -1,0 +1,64 @@
+<!-- Validation failure messages -->
+<% if @message.errors.any? %>
+  <% @message.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Message #<%= @message.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_message/<%= @message.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for to_id -->
+      <div class="form-group">
+        <label for="to_id" class="control-label">
+          To
+        </label>
+
+        <input type="text" id="to_id" name="to_id" placeholder="To" class="form-control" value="<%= @message.to_id %>">
+      </div>
+
+      <!-- Label and input for subject -->
+      <div class="form-group">
+        <label for="subject" class="control-label">
+          Subject
+        </label>
+
+        <input type="text" id="subject" name="subject" placeholder="Subject" class="form-control" value="<%= @message.subject %>">
+      </div>
+
+      <!-- Label and input for content -->
+      <div class="form-group">
+        <label for="content" class="control-label">
+          Content
+        </label>
+
+        <textarea id="content" name="content" placeholder="Content" class="form-control" rows="3"><%= @message.content %></textarea>
+      </div>
+
+      <!-- Label and input for from_id -->
+      <div class="form-group">
+        <label for="from_id" class="control-label">
+          From
+        </label>
+
+        <input type="text" id="from_id" name="from_id" placeholder="From" class="form-control" value="<%= @message.from_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Message
+      </button>
+      or
+      <a href="/messages/<%= @message.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
