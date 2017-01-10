@@ -18,7 +18,7 @@
 
       <% @messages.each do |message| %>
       <tr>
-        <td><%= message.to_id %></td>
+        <td><%= message.to.first_name %></td>
         <td><%= message.subject %></td>
         <td><%= message.content %></td>
         <td><%= message.from_id %></td>
