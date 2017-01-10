@@ -21,7 +21,7 @@
         <td><%= message.to.first_name %></td>
         <td><%= message.subject %></td>
         <td><%= message.content %></td>
-        <td><%= message.from_id %></td>
+        <td><%= message.from.first_name %></td>
         <td>
           <a href="/messages/<%= message.id %>" class="btn btn-primary">Show</a>
           <a href="/messages/<%= message.id %>/edit" class="btn btn-warning">Edit</a>
