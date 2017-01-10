@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_many   :bookmarks,
+             :dependent => :destroy
+
   has_many   :userreviews,
              :foreign_key => "reviewed_id",
              :dependent => :destroy
