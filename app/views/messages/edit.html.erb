@@ -24,7 +24,7 @@
           To
         </label>
 
-        <input type="text" id="to_id" name="to_id" placeholder="To" class="form-control" value="<%= @message.to_id %>">
+        <%= select_tag(:to_id, options_from_collection_for_select(User.all, :id, :first_name, @message.to_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for subject -->
