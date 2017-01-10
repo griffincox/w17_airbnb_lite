@@ -19,7 +19,7 @@
       <tr>
         <td><%= request.booking.price %></td>
         <td><%= request.introduction %></td>
-        <td><%= request.from_id %></td>
+        <td><%= request.from.first_name %></td>
         <td>
           <a href="/requests/<%= request.id %>" class="btn btn-primary">Show</a>
           <a href="/requests/<%= request.id %>/edit" class="btn btn-warning">Edit</a>
