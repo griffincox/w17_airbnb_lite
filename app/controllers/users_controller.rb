@@ -6,6 +6,12 @@ class UsersController < ApplicationController
   end
 
   def show
+    @listingreview = Listingreview.new
+    @request = Request.new
+    @bookmark = Bookmark.new
+    @userreview = Userreview.new
+    @message = Message.new
+    @listing = Listing.new
     @user = User.find(params[:id])
 
     render("users/show.html.erb")

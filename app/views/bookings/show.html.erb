@@ -60,6 +60,65 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_userreview" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for reviewer_id -->
+      <div class="form-group">
+        <label for="reviewer_id" class="control-label">
+          Reviewer
+        </label>
+
+        <%= select_tag(:reviewer_id, options_from_collection_for_select(User.all, :id, :first_name), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for reviewed_id -->
+      <div class="form-group">
+        <label for="reviewed_id" class="control-label">
+          Reviewed
+        </label>
+
+        <%= select_tag(:reviewed_id, options_from_collection_for_select(User.all, :id, :first_name), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for title -->
+      <div class="form-group">
+        <label for="title" class="control-label">
+          Title
+        </label>
+
+        <input type="text" id="title" name="title" placeholder="Title" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for content -->
+      <div class="form-group">
+        <label for="content" class="control-label">
+          Content
+        </label>
+
+        <textarea id="content" name="content" placeholder="Content" class="form-control" rows="3"></textarea>
+      </div>
+
+      <!-- Label and input for rating -->
+      <div class="form-group">
+        <label for="rating" class="control-label">
+          Rating
+        </label>
+
+        <input type="text" id="rating" name="rating" placeholder="Rating" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for booking_id -->
+      <input type="hidden" name="booking_id" value="<%= @booking.id %>">
+
+      <button class="btn btn-block btn-success">
+        Create Userreview
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>
@@ -91,6 +150,38 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_request" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for booking_id -->
+      <input type="hidden" name="booking_id" value="<%= @booking.id %>">
+
+      <!-- Label and input for introduction -->
+      <div class="form-group">
+        <label for="introduction" class="control-label">
+          Introduction
+        </label>
+
+        <textarea id="introduction" name="introduction" placeholder="Introduction" class="form-control" rows="3"></textarea>
+      </div>
+
+      <!-- Label and input for from_id -->
+      <div class="form-group">
+        <label for="from_id" class="control-label">
+          From
+        </label>
+
+        <%= select_tag(:from_id, options_from_collection_for_select(User.all, :id, :first_name), :class => "form-control") %>
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Request
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>
