@@ -1,6 +1,11 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_many   :reviews,
+             :class_name => "Userreview",
+             :foreign_key => "reviewer_id",
+             :dependent => :destroy
+
   has_many   :received_messages,
              :class_name => "Message",
              :foreign_key => "from_id",
