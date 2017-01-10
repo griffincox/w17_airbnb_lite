@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def index
-    @users = User.page(params[:page]).per(10)
+    @q = User.ransack(params[:q])
+    @users = @q.result(:distinct => true).includes(:listings, :sent_messages, :received_messages, :reviews, :userreviews, :bookmarks, :requests, :bookingreviews).page(params[:page]).per(10)
 
     render("users/index.html.erb")
   end

@@ -3,6 +3,252 @@
     Listings
     <a href="/listings/new" class="btn btn-lg btn-success">New Listing</a>
   </h1>
+</div><div class="row mb-1">
+  <div class="col-md-12">
+    <%= search_form_for @q, :class => collapse_search_form, :id => "listings_filters" do |f| %>
+      <p class="lead">Narrow results:</p>
+
+        <div class="form-group">
+    <%= f.label :title_cont, "Title contains" %>
+    <%= f.text_field :title_cont, :class => "form-control", :placeholder => "Title contains" %>
+  </div>
+
+<div class="form-group">
+    <%= f.label :address_cont, "Address contains" %>
+    <%= f.text_field :address_cont, :class => "form-control", :placeholder => "Address contains" %>
+  </div>
+
+<div class="form-group">
+  <%= f.label :nightly_price, "Nightly price" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :nightly_price_gteq, :class => "form-control", :placeholder => "Nightly price greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :nightly_price_lteq, :class => "form-control", :placeholder => "Nightly price less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+        <%= f.label :check_in_time, "Check in time" %>
+        <div class="row">
+          <div class='col-md-6 mb-1'>
+            <div class='input-group date' id='check_in_timegteqPicker'>
+              <%= f.text_field :check_in_time_gteq, :class => "form-control", :placeholder => "Check in time greater than or equal to" %>
+              <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-time"></span>
+              </span>
+              <script type="text/javascript">
+                $(function () {
+                    $('#check_in_timegteqPicker').datetimepicker({
+                      format: 'LT'
+                    });
+                });
+              </script>
+            </div>
+          </div>
+          <div class='col-md-6'>
+            <div class='input-group date' id='check_in_timelteqPicker'>
+              <%= f.text_field :check_in_time_lteq, :class => "form-control", :placeholder => "Check in time less than or equal to" %>
+              <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-time"></span>
+              </span>
+              <script type="text/javascript">
+                $(function () {
+                    $('#check_in_timelteqPicker').datetimepicker({
+                      format: 'LT'
+                    });
+                });
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<div class="form-group">
+    <%= f.label :neighborhood_cont, "Neighborhood contains" %>
+    <%= f.text_field :neighborhood_cont, :class => "form-control", :placeholder => "Neighborhood contains" %>
+  </div>
+
+<div class="form-group">
+    <%= f.label :city_cont, "City contains" %>
+    <%= f.text_field :city_cont, :class => "form-control", :placeholder => "City contains" %>
+  </div>
+
+<div class="form-group">
+  <%= f.label :max_occupancy, "Max occupancy" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :max_occupancy_gteq, :class => "form-control", :placeholder => "Max occupancy greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :max_occupancy_lteq, :class => "form-control", :placeholder => "Max occupancy less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :bed_count, "Bed count" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :bed_count_gteq, :class => "form-control", :placeholder => "Bed count greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :bed_count_lteq, :class => "form-control", :placeholder => "Bed count less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :bathroom_count, "Bathroom count" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :bathroom_count_gteq, :class => "form-control", :placeholder => "Bathroom count greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :bathroom_count_lteq, :class => "form-control", :placeholder => "Bathroom count less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :bedroom_count, "Bedroom count" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :bedroom_count_gteq, :class => "form-control", :placeholder => "Bedroom count greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :bedroom_count_lteq, :class => "form-control", :placeholder => "Bedroom count less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+    <%= f.label :description_cont, "Description contains" %>
+    <%= f.text_field :description_cont, :class => "form-control", :placeholder => "Description contains" %>
+  </div>
+
+<div class="form-group">
+    <%= f.label :room_type_eq, "Room type" %>
+    <div>
+      <label class="radio-inline">
+        <%= f.radio_button :room_type_eq, "1", checked: ((params[:q] && params[:q][:room_type_eq]) == "1" ? "checked" : "") %> Yes
+      </label>
+      <label class="radio-inline">
+        <%= f.radio_button :room_type_eq, "0", checked: ((params[:q] && params[:q][:room_type_eq]) == "0" ? "checked" : "")%> No
+      </label>
+      <label class="radio-inline">
+        <%= f.radio_button :room_type_eq, ""%> Either
+      </label>
+    </div>
+  </div>
+
+<div class="form-group">
+          <%= f.label :created_at, "Created at" %>
+          <div class="row">
+            <div class='col-md-6 mb-1'>
+              <div class='input-group date' id='created_atgteqPicker'>
+                  <%= f.text_field :created_at_gteq, :class => "form-control", :placeholder => "Created at greater than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+
+            <div class='col-md-6'>
+              <div class='input-group date' id='created_atlteqPicker'>
+                  <%= f.text_field :created_at_lteq, :class => "form-control", :placeholder => "Created at less than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+          </div>
+      </div>
+      <script type="text/javascript">
+          $(function () {
+              $('#created_atgteqPicker').datetimepicker({
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#created_atlteqPicker').datetimepicker({
+                  useCurrent: false,
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#created_atgteqPicker').on("dp.change", function (e) {
+                  $('#created_atlteqPicker').data("DateTimePicker").minDate(e.date);
+              });
+              $('#created_atlteqPicker').on("dp.change", function (e) {
+                  $('#created_atgteqPicker').data("DateTimePicker").maxDate(e.date);
+              });
+          });
+      </script>
+
+        <div class="form-group">
+  <%= f.label :price, "Booking Price" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :availabilities_price_gteq, :class => "form-control", :placeholder => "Booking Price greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :availabilities_price_lteq, :class => "form-control", :placeholder => "Booking Price less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+          <%= f.label :created_at, "Listingreview Created at" %>
+          <div class="row">
+            <div class='col-md-6 mb-1'>
+              <div class='input-group date' id='listingreviewsgteqcreated_atPicker'>
+                  <%= f.text_field :listingreviews_created_at_gteq, :class => "form-control", :placeholder => "Listingreview Created at greater than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+
+            <div class='col-md-6'>
+              <div class='input-group date' id='listingreviewslteqcreated_atPicker'>
+                  <%= f.text_field :listingreviews_created_at_lteq, :class => "form-control", :placeholder => "Listingreview Created at less than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+          </div>
+      </div>
+      <script type="text/javascript">
+          $(function () {
+              $('#listingreviewsgteqcreated_atPicker').datetimepicker({
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#listingreviewslteqcreated_atPicker').datetimepicker({
+                  useCurrent: false,
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#listingreviewsgteqcreated_atPicker').on("dp.change", function (e) {
+                  $('#listingreviewslteqcreated_atPicker').data("DateTimePicker").minDate(e.date);
+              });
+              $('#listingreviewslteqcreated_atPicker').on("dp.change", function (e) {
+                  $('#listingreviewsgteqcreated_atPicker').data("DateTimePicker").maxDate(e.date);
+              });
+          });
+      </script>
+
+<div class="form-group">
+      <%= f.label :user_first_name_cont, "User first_name contains" %>
+      <%= f.text_field :user_first_name_cont, :class => "form-control", :placeholder => "User first_name contains" %>
+    </div>
+
+      <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
+
+      <a href="/listings" class="btn btn-default btn-block mb-1">Clear filters</a>
+    <% end %>
+    <a class="btn btn-default btn-block mb-1" data-toggle="collapse" href="#listings_filters">
+      Show Filters
+    </a>
+  </div>
 </div>
 
 <div class="row">
