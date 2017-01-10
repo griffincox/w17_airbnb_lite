@@ -23,7 +23,13 @@
 
       <% @listingreviews.each do |listingreview| %>
       <tr>
-        <td><%= listingreview.user.first_name %></td>
+        <td>
+          <% if listingreview.user.present? %>
+            <a href="/users/<%= listingreview.user.id %>">
+              <%= listingreview.user.first_name %>
+            </a>
+          <% end %>
+        </td>
         <td><%= listingreview.accuracy %></td>
         <td><%= listingreview.communication %></td>
         <td><%= listingreview.cleanliness %></td>
@@ -31,7 +37,13 @@
         <td><%= listingreview.check_in %></td>
         <td><%= listingreview.value %></td>
         <td><%= listingreview.content %></td>
-        <td><%= listingreview.listing.title %></td>
+        <td>
+          <% if listingreview.listing.present? %>
+            <a href="/listings/<%= listingreview.listing.id %>">
+              <%= listingreview.listing.title %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/listingreviews/<%= listingreview.id %>" class="btn btn-primary">Show</a>
           <a href="/listingreviews/<%= listingreview.id %>/edit" class="btn btn-warning">Edit</a>

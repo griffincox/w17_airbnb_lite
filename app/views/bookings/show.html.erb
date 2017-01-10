@@ -12,7 +12,13 @@
       <dd><%= @booking.date %></dd>
 
       <dt>Listing</dt>
-      <dd><%= @booking.listing_id %></dd>
+      <dd>
+        <% if @booking.listing.present? %>
+          <a href="/listings/<%= @booking.listing_id %>">
+            <%= @booking.listing.title %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Booked</dt>
       <dd><%= @booking.booked %></dd>

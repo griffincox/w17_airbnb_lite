@@ -29,7 +29,13 @@
       <tr>
         <td><%= listing.title %></td>
         <td><%= listing.room_type %></td>
-        <td><%= listing.user.first_name %></td>
+        <td>
+          <% if listing.user.present? %>
+            <a href="/users/<%= listing.user.id %>">
+              <%= listing.user.first_name %>
+            </a>
+          <% end %>
+        </td>
         <td><%= listing.description %></td>
         <td><%= listing.bedroom_count %></td>
         <td><%= listing.bathroom_count %></td>

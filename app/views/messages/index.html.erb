@@ -18,10 +18,22 @@
 
       <% @messages.each do |message| %>
       <tr>
-        <td><%= message.to.first_name %></td>
+        <td>
+          <% if message.to.present? %>
+            <a href="/users/<%= message.to.id %>">
+              <%= message.to.first_name %>
+            </a>
+          <% end %>
+        </td>
         <td><%= message.subject %></td>
         <td><%= message.content %></td>
-        <td><%= message.from.first_name %></td>
+        <td>
+          <% if message.from.present? %>
+            <a href="/users/<%= message.from.id %>">
+              <%= message.from.first_name %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/messages/<%= message.id %>" class="btn btn-primary">Show</a>
           <a href="/messages/<%= message.id %>/edit" class="btn btn-warning">Edit</a>

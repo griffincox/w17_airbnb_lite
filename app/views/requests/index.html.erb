@@ -17,9 +17,21 @@
 
       <% @requests.each do |request| %>
       <tr>
-        <td><%= request.booking.price %></td>
+        <td>
+          <% if request.booking.present? %>
+            <a href="/bookings/<%= request.booking.id %>">
+              <%= request.booking.price %>
+            </a>
+          <% end %>
+        </td>
         <td><%= request.introduction %></td>
-        <td><%= request.from.first_name %></td>
+        <td>
+          <% if request.from.present? %>
+            <a href="/users/<%= request.from.id %>">
+              <%= request.from.first_name %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/requests/<%= request.id %>" class="btn btn-primary">Show</a>
           <a href="/requests/<%= request.id %>/edit" class="btn btn-warning">Edit</a>

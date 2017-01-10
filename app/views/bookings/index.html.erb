@@ -20,7 +20,13 @@
       <tr>
         <td><%= booking.price %></td>
         <td><%= booking.date %></td>
-        <td><%= booking.listing.title %></td>
+        <td>
+          <% if booking.listing.present? %>
+            <a href="/listings/<%= booking.listing.id %>">
+              <%= booking.listing.title %>
+            </a>
+          <% end %>
+        </td>
         <td><%= booking.booked %></td>
         <td>
           <a href="/bookings/<%= booking.id %>" class="btn btn-primary">Show</a>
