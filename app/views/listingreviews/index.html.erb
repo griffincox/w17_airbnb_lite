@@ -23,7 +23,7 @@
 
       <% @listingreviews.each do |listingreview| %>
       <tr>
-        <td><%= listingreview.user_id %></td>
+        <td><%= listingreview.user.first_name %></td>
         <td><%= listingreview.accuracy %></td>
         <td><%= listingreview.communication %></td>
         <td><%= listingreview.cleanliness %></td>
