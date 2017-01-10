@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Userreview resource:
+  # CREATE
+  get "/userreviews/new", :controller => "userreviews", :action => "new"
+  post "/create_userreview", :controller => "userreviews", :action => "create"
+
+  # READ
+  get "/userreviews", :controller => "userreviews", :action => "index"
+  get "/userreviews/:id", :controller => "userreviews", :action => "show"
+
+  # UPDATE
+  get "/userreviews/:id/edit", :controller => "userreviews", :action => "edit"
+  post "/update_userreview/:id", :controller => "userreviews", :action => "update"
+
+  # DELETE
+  get "/delete_userreview/:id", :controller => "userreviews", :action => "destroy"
+  #------------------------------
+
   # Routes for the Message resource:
   # CREATE
   get "/messages/new", :controller => "messages", :action => "new"

@@ -1,0 +1,38 @@
+<div class="page-header">
+  <h1>
+    Userreviews
+    <a href="/userreviews/new" class="btn btn-lg btn-success">New Userreview</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Reviewer</th>
+        <th>Reviewed</th>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Rating</th>
+        <th>Booking</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @userreviews.each do |userreview| %>
+      <tr>
+        <td><%= userreview.reviewer_id %></td>
+        <td><%= userreview.reviewed_id %></td>
+        <td><%= userreview.title %></td>
+        <td><%= userreview.content %></td>
+        <td><%= userreview.rating %></td>
+        <td><%= userreview.booking_id %></td>
+        <td>
+          <a href="/userreviews/<%= userreview.id %>" class="btn btn-primary">Show</a>
+          <a href="/userreviews/<%= userreview.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_userreview/<%= userreview.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

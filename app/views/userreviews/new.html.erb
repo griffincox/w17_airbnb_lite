@@ -1,0 +1,82 @@
+<!-- Validation failure messages -->
+<% if @userreview.errors.any? %>
+  <% @userreview.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Userreview</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_userreview" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for reviewer_id -->
+      <div class="form-group">
+        <label for="reviewer_id" class="control-label">
+          Reviewer
+        </label>
+
+        <input type="text" id="reviewer_id" name="reviewer_id" placeholder="Reviewer" class="form-control" value="<%= @userreview.reviewer_id %>">
+      </div>
+
+      <!-- Label and input for reviewed_id -->
+      <div class="form-group">
+        <label for="reviewed_id" class="control-label">
+          Reviewed
+        </label>
+
+        <input type="text" id="reviewed_id" name="reviewed_id" placeholder="Reviewed" class="form-control" value="<%= @userreview.reviewed_id %>">
+      </div>
+
+      <!-- Label and input for title -->
+      <div class="form-group">
+        <label for="title" class="control-label">
+          Title
+        </label>
+
+        <input type="text" id="title" name="title" placeholder="Title" class="form-control" value="<%= @userreview.title %>">
+      </div>
+
+      <!-- Label and input for content -->
+      <div class="form-group">
+        <label for="content" class="control-label">
+          Content
+        </label>
+
+        <textarea id="content" name="content" placeholder="Content" class="form-control" rows="3"><%= @userreview.content %></textarea>
+      </div>
+
+      <!-- Label and input for rating -->
+      <div class="form-group">
+        <label for="rating" class="control-label">
+          Rating
+        </label>
+
+        <input type="text" id="rating" name="rating" placeholder="Rating" class="form-control" value="<%= @userreview.rating %>">
+      </div>
+
+      <!-- Label and input for booking_id -->
+      <div class="form-group">
+        <label for="booking_id" class="control-label">
+          Booking
+        </label>
+
+        <input type="text" id="booking_id" name="booking_id" placeholder="Booking" class="form-control" value="<%= @userreview.booking_id %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Userreview
+      </button>
+      or
+      <a href="/userreviews">Cancel</a>
+    </form>
+  </div>
+</div>
