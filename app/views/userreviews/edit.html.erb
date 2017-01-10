@@ -24,7 +24,7 @@
           Reviewer
         </label>
 
-        <input type="text" id="reviewer_id" name="reviewer_id" placeholder="Reviewer" class="form-control" value="<%= @userreview.reviewer_id %>">
+        <%= select_tag(:reviewer_id, options_from_collection_for_select(User.all, :id, :first_name, @userreview.reviewer_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for reviewed_id -->
