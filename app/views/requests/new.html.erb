@@ -42,7 +42,7 @@
           From
         </label>
 
-        <input type="text" id="from_id" name="from_id" placeholder="From" class="form-control" value="<%= @request.from_id %>">
+        <%= select_tag(:from_id, options_from_collection_for_select(User.all, :id, :first_name, @request.from_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-success">
