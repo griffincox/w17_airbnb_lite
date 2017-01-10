@@ -1,0 +1,55 @@
+<!-- Validation failure messages -->
+<% if @request.errors.any? %>
+  <% @request.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Request #<%= @request.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_request/<%= @request.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for booking_id -->
+      <div class="form-group">
+        <label for="booking_id" class="control-label">
+          Booking
+        </label>
+
+        <input type="text" id="booking_id" name="booking_id" placeholder="Booking" class="form-control" value="<%= @request.booking_id %>">
+      </div>
+
+      <!-- Label and input for introduction -->
+      <div class="form-group">
+        <label for="introduction" class="control-label">
+          Introduction
+        </label>
+
+        <textarea id="introduction" name="introduction" placeholder="Introduction" class="form-control" rows="3"><%= @request.introduction %></textarea>
+      </div>
+
+      <!-- Label and input for from_id -->
+      <div class="form-group">
+        <label for="from_id" class="control-label">
+          From
+        </label>
+
+        <input type="text" id="from_id" name="from_id" placeholder="From" class="form-control" value="<%= @request.from_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Request
+      </button>
+      or
+      <a href="/requests/<%= @request.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
