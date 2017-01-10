@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "listings#index"
   # Routes for the Listingreview resource:
   # CREATE
   get "/listingreviews/new", :controller => "listingreviews", :action => "new"
