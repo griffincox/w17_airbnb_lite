@@ -1,6 +1,8 @@
 class Userreview < ApplicationRecord
   # Direct associations
 
+  belongs_to :booking
+
   belongs_to :reviewed,
              :class_name => "User"
 
