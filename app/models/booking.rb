@@ -1,6 +1,9 @@
 class Booking < ApplicationRecord
   # Direct associations
 
+  has_many   :requests,
+             :dependent => :destroy
+
   has_many   :userreviews,
              :dependent => :destroy
 
