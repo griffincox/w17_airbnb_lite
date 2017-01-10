@@ -1,6 +1,10 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_many   :bookingreviews,
+             :class_name => "Listingreview",
+             :dependent => :destroy
+
   has_many   :requests,
              :foreign_key => "from_id",
              :dependent => :destroy
