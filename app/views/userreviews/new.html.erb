@@ -33,7 +33,7 @@
           Reviewed
         </label>
 
-        <input type="text" id="reviewed_id" name="reviewed_id" placeholder="Reviewed" class="form-control" value="<%= @userreview.reviewed_id %>">
+        <%= select_tag(:reviewed_id, options_from_collection_for_select(User.all, :id, :first_name, @userreview.reviewed_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for title -->
